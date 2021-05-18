@@ -4,29 +4,31 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 
 
-def add_label():
-    print('add label')
+class Window(QMainWindow):
+    def __init__(self):
+        super(Window, self).__init__()
+
+        self.setWindowTitle("Тренажер печати")
+        self.setGeometry(300, 250, 500, 500)
+
+        self.main_text = QtWidgets.QLabel(self)
+        self.main_text.setText("Это базовая надпись")
+        self.main_text.move(100, 100)
+        self.main_text.adjustSize()
+
+        self.btn_1 = QtWidgets.QPushButton(self)
+        self.btn_1.move(70, 150)
+        self.btn_1.setText("Нажми на меня")
+        self.btn_1.setFixedWidth(200)
+        self.btn_1.clicked.connect(self.add_label)
+
+    def add_label(self):
+        print('add label')
 
 
 def application():
     app = QApplication(sys.argv)
-    window = QMainWindow()
-
-    window.setWindowTitle("Тренажер печати")
-    window.setGeometry(300, 250, 500, 500)
-
-    main_text = QtWidgets.QLabel(window)
-    main_text.setText("Это базовая надпись")
-    main_text.move(100, 100)
-    main_text.adjustSize()
-    # s_question_text = QtWidgets. TODO
-
-    btn_1 = QtWidgets.QPushButton(window)
-    btn_1.move(70, 150)
-    btn_1.setText("Нажми на меня")
-    btn_1.setFixedWidth(200)
-    btn_1.clicked.connect(add_label)
-
+    window = Window()
     window.show()
     sys.exit(app.exec_())
 
