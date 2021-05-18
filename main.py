@@ -11,6 +11,8 @@ class Window(QMainWindow):
         self.setWindowTitle("Тренажер печати")
         self.setGeometry(300, 250, 500, 500)
 
+        self.new_text = QtWidgets.QLabel(self)
+
         self.main_text = QtWidgets.QLabel(self)
         self.main_text.setText("Это базовая надпись")
         self.main_text.move(100, 100)
@@ -23,7 +25,9 @@ class Window(QMainWindow):
         self.btn_1.clicked.connect(self.add_label)
 
     def add_label(self):
-        print('add label')
+        self.new_text.setText('Вторая надпись')
+        self.new_text.move(100, 50)
+        self.new_text.adjustSize()
 
 
 def application():
